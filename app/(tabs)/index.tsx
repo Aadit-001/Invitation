@@ -13,6 +13,7 @@ import {
   View,
 } from "react-native";
 import IMAGES from "../../constants/image";
+import '../global.css';
 
 const { width } = Dimensions.get("window");
 
