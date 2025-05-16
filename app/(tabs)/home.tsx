@@ -50,13 +50,13 @@ export default function Home() {
     {
       id: "f2",
       name: "Anniversary Special",
-      image: IMAGES.templates.floral,
+      image: IMAGES.templates.flowers,
       featured: true,
     },
     {
       id: "f3",
       name: "Birthday Bash",
-      image: IMAGES.templates.floral,
+      image: IMAGES.templates.flowers,
       featured: true,
     },
   ];
@@ -65,12 +65,12 @@ export default function Home() {
   const templates = [
     { id: "1", name: "Shell Floral", image: IMAGES.templates.floral },
     { id: "2", name: "Golden Frame", image: IMAGES.templates.floral },
-    { id: "3", name: "Blue Elegance", image: IMAGES.templates.floral },
-    { id: "4", name: "Party Lights", image: IMAGES.templates.floral },
+    { id: "3", name: "Blue Elegance", image: IMAGES.templates.flowers },
+    { id: "4", name: "Party Lights", image: IMAGES.templates.flowers },
     { id: "5", name: "Rustic Wedding", image: IMAGES.templates.floral },
     { id: "6", name: "Baby Shower", image: IMAGES.templates.floral },
     { id: "7", name: "Festival Theme", image: IMAGES.templates.floral },
-    { id: "8", name: "Corporate Event", image: IMAGES.templates.floral },
+    { id: "8", name: "Corporate Event", image: IMAGES.templates.flowers },
   ];
 
   // Event categories

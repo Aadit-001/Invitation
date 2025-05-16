@@ -8,7 +8,7 @@ export default function Index() {
       className="flex-1 items-center justify-center bg-white"
       style={{ padding: 20 }}
     >
-      <Link href="/(tabs)/create">
+      <Link href="/(tabs)/home">
         <Text className="text-red-500 text-2xl font-bold ">Onboarding </Text>
       </Link>
     </View>

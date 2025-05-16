@@ -71,7 +71,11 @@ export default function TabLayout() {
         options={{
           title: "My Account",
           tabBarIcon: ({ color }) => (
-            <Ionicons name="person-outline" size={24} color={color} />
+            <Image
+              source={require("../../assets/icons/person.png")}
+              style={{ width: 22, height: 22, tintColor: color }}
+              resizeMode="contain"
+            />
           ),
         }}
       />
@@ -82,8 +86,8 @@ export default function TabLayout() {
           title: "Premium",
           tabBarIcon: ({ color }) => (
             <Image
-              source={require("../../assests/icons/crown.png")}
-              style={{ width: 24, height: 24, tintColor: color }}
+              source={require("../../assets/icons/crown.png")}
+              style={{ width: 23, height: 24, tintColor: color }}
               resizeMode="contain"
             />
           ),
