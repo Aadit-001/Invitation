@@ -15,7 +15,6 @@ import {
 
 const { width } = Dimensions.get("window");
 
-// Example icons for categories (customize as needed)
 const categoryIcons = {
   Wedding: "heart",
   Birthday: "gift",
@@ -93,12 +92,251 @@ export default function ai() {
     "Friendship",
     "Apology",
     "Sorry",
+    "Other",
   ];
 
-  // ... (categoryQuestions stays the same as your code)
-
   const categoryQuestions = {
-    /* ... your questions ... */
+    Wedding: [
+      "What are the names of the couple?",
+      "What's the wedding date and time?",
+      "What's the venue name and address?",
+      "Any specific theme or color scheme?",
+      "Any special message to include?",
+    ],
+    Birthday: [
+      "What's the name of the birthday person?",
+      "How old will they be turning?",
+      "When and where is the celebration?",
+      "Any theme for the party?",
+      "What should guests bring?",
+    ],
+    Party: [
+      "What is the occasion for the party?",
+      "When and where will it take place?",
+      "Is there a dress code or theme?",
+      "Who is hosting the party?",
+      "Any special instructions for guests?",
+    ],
+    Anniversary: [
+      "Who is celebrating the anniversary?",
+      "Which anniversary year is it?",
+      "Date and time of the celebration?",
+      "Venue details?",
+      "Any message or quote to include?",
+    ],
+    "Baby Shower": [
+      "Who is the baby shower for?",
+      "Date and time of the event?",
+      "Venue details?",
+      "Is there a gift registry or theme?",
+      "Any special instructions for guests?",
+    ],
+    Graduation: [
+      "Who is graduating?",
+      "What school or university?",
+      "Date and time of the ceremony or party?",
+      "Venue details?",
+      "Any message or quote to include?",
+    ],
+    Festival: [
+      "Which festival is being celebrated?",
+      "Date and time of the event?",
+      "Venue details?",
+      "Any dress code or theme?",
+      "Any special message or wishes?",
+    ],
+    Corporate: [
+      "What is the event name or purpose?",
+      "Date and time of the event?",
+      "Venue and company name?",
+      "Dress code or agenda?",
+      "RSVP or contact details?",
+    ],
+    Housewarming: [
+      "Who is hosting the housewarming?",
+      "Date and time of the event?",
+      "New address?",
+      "Any theme or instructions?",
+      "Any special message to guests?",
+    ],
+    "Bachelorette Party": [
+      "Who is the party for?",
+      "Date and time of the celebration?",
+      "Venue or meeting point?",
+      "Theme or dress code?",
+      "Any special activities planned?",
+    ],
+    "Bridal Shower": [
+      "Who is the bride-to-be?",
+      "Date and time of the shower?",
+      "Venue details?",
+      "Theme or registry information?",
+      "Any special instructions for guests?",
+    ],
+    Engagement: [
+      "Who are the engaged couple?",
+      "Date and time of the party?",
+      "Venue details?",
+      "Theme or dress code?",
+      "Any special message or RSVP info?",
+    ],
+    Farewell: [
+      "Who is the farewell for?",
+      "Date and time of the event?",
+      "Venue details?",
+      "Reason for farewell (optional)?",
+      "Any message or wishes?",
+    ],
+    Welcome: [
+      "Who is being welcomed?",
+      "Date and time of the event?",
+      "Venue details?",
+      "Any theme or special activities?",
+      "Any message or wishes?",
+    ],
+    Retirement: [
+      "Who is retiring?",
+      "Date and time of the celebration?",
+      "Venue details?",
+      "Career highlights to mention?",
+      "Any message or wishes?",
+    ],
+    "Save the Date": [
+      "What is the event?",
+      "Who is hosting or being celebrated?",
+      "Date and time to save?",
+      "Venue (if known)?",
+      "Any additional notes?",
+    ],
+    Memorial: [
+      "Who is being remembered?",
+      "Date and time of the memorial?",
+      "Venue or location?",
+      "Any special requests for attendees?",
+      "Message or quote to include?",
+    ],
+    "Children's Party": [
+      "Who is the party for?",
+      "Age of the child?",
+      "Date and time of the party?",
+      "Venue details?",
+      "Theme or activities planned?",
+    ],
+    Religious: [
+      "What is the religious occasion?",
+      "Date and time of the event?",
+      "Venue or place of worship?",
+      "Dress code or customs?",
+      "Any message or blessings?",
+    ],
+    Achievement: [
+      "Who is being celebrated?",
+      "What is the achievement?",
+      "Date and time of the celebration?",
+      "Venue details?",
+      "Any special message or quote?",
+    ],
+    Appreciation: [
+      "Who is being appreciated?",
+      "Reason for appreciation?",
+      "Date and time of the event (if any)?",
+      "Venue (if any)?",
+      "Any special message or wishes?",
+    ],
+    "Mother's Day": [
+      "Who is being celebrated?",
+      "Date and time of the event?",
+      "Venue details?",
+      "Any special activities or theme?",
+      "Message or wishes for mothers?",
+    ],
+    "Father's Day": [
+      "Who is being celebrated?",
+      "Date and time of the event?",
+      "Venue details?",
+      "Any special activities or theme?",
+      "Message or wishes for fathers?",
+    ],
+    "Teacher's Day": [
+      "Who is being celebrated?",
+      "Date and time of the event?",
+      "Venue details?",
+      "Any special activities or theme?",
+      "Message or wishes for teachers?",
+    ],
+    "Women's Day": [
+      "Who is being celebrated?",
+      "Date and time of the event?",
+      "Venue details?",
+      "Any special activities or theme?",
+      "Message or wishes for women?",
+    ],
+    Congratulations: [
+      "Who is being congratulated?",
+      "Reason for congratulations?",
+      "Date and time of the celebration (if any)?",
+      "Venue (if any)?",
+      "Any special message or wishes?",
+    ],
+    "Good Morning": [
+      "Who is the message for?",
+      "Any specific occasion or reason?",
+      "Any quote or wish to include?",
+      "Preferred tone (cheerful, formal, etc.)?",
+      "Any additional notes?",
+    ],
+    "Good Night": [
+      "Who is the message for?",
+      "Any specific occasion or reason?",
+      "Any quote or wish to include?",
+      "Preferred tone (calm, loving, etc.)?",
+      "Any additional notes?",
+    ],
+    Motivation: [
+      "Who is the message for?",
+      "What is the goal or challenge?",
+      "Any specific quote or phrase to include?",
+      "Preferred tone (inspiring, supportive, etc.)?",
+      "Any additional notes?",
+    ],
+    Family: [
+      "What is the family occasion?",
+      "Date and time of the event?",
+      "Venue details?",
+      "Any theme or dress code?",
+      "Any special message or wishes?",
+    ],
+    Friendship: [
+      "Who is the message or event for?",
+      "Occasion (if any)?",
+      "Date and time (if event)?",
+      "Venue (if event)?",
+      "Any special message or wishes?",
+    ],
+    Apology: [
+      "Who is the apology for?",
+      "Reason for the apology?",
+      "Any specific message to include?",
+      "Preferred tone (formal, heartfelt, etc.)?",
+      "Any additional notes?",
+    ],
+    Sorry: [
+      "Who is the message for?",
+      "Reason for saying sorry?",
+      "Any specific message to include?",
+      "Preferred tone (formal, heartfelt, etc.)?",
+      "Any additional notes?",
+    ],
+    Other: [
+      "What is the name of your event?",
+      "Who is hosting or organizing the event?",
+      "What is the date and time?",
+      "Where will the event be held (venue or address)?",
+      "What is the purpose or theme of the event?",
+      "Who is invited (target audience)?",
+      "Are there any special instructions or requests for attendees?",
+      "Would you like to include a message, quote, or RSVP details?",
+    ],
   };
 
   const currentQuestions = categoryQuestions[selectedCategory] || [];
@@ -129,7 +367,6 @@ export default function ai() {
     // ...submit logic
   };
 
-  // Filter categories by search
   const filteredCategories = search.trim()
     ? categories.filter((c) => c.toLowerCase().includes(search.toLowerCase()))
     : categories;
@@ -151,45 +388,22 @@ export default function ai() {
         contentContainerStyle={{ paddingBottom: 70, minHeight: "100%" }}
       >
         {/* Header */}
-        <View
-          style={{ paddingTop: 48, paddingHorizontal: 24, marginBottom: 16 }}
-        >
-          <Text
-            style={{
-              fontSize: 28,
-              fontWeight: "bold",
-              color: "#262626",
-              letterSpacing: 1,
-            }}
-          >
+        <View className="pt-12 px-6 mb-4">
+          <Text className="text-[28px] font-bold text-[#262626] tracking-wide">
             🎉 AI Invitation Designer
           </Text>
-          <Text style={{ color: "#6b7280", fontSize: 16, marginTop: 6 }}>
+          <Text className="text-gray-500 text-base mt-1.5">
             Answer a few questions and let AI create the perfect invitation.
           </Text>
         </View>
 
         {/* Category Search & Grid */}
-        <View
-          style={{
-            marginHorizontal: 20,
-            marginBottom: 12,
-            backgroundColor: "#fff",
-            borderRadius: 18,
-            padding: 12,
-            shadowColor: "#000",
-            shadowOpacity: 0.08,
-            shadowRadius: 8,
-            elevation: 3,
-            flexDirection: "row",
-            alignItems: "center",
-          }}
-        >
+        <View className="mx-5 mb-3 bg-white rounded-2xl p-3 flex-row items-center shadow shadow-black/10">
           <Ionicons name="search" size={20} color="#C67C4E" />
           <TextInput
             placeholder="Search categories..."
             placeholderTextColor="#aaa"
-            style={{ flex: 1, marginLeft: 8, fontSize: 16, color: "#222" }}
+            className="flex-1 ml-2 text-base text-[#222]"
             value={search}
             onChangeText={setSearch}
             onFocus={() => setShowCategories(true)}
@@ -210,16 +424,7 @@ export default function ai() {
         </View>
 
         {/* Category Pills Grid */}
-        <View
-          style={{
-            flexDirection: "row",
-            flexWrap: "wrap",
-            gap: 8,
-            marginHorizontal: 20,
-            marginBottom: 20,
-            justifyContent: "flex-start",
-          }}
-        >
+        <View className="flex-row flex-wrap gap-2 mx-5 mb-5 justify-start">
           {filteredCategories.map((category) => (
             <TouchableOpacity
               key={category}
@@ -227,21 +432,16 @@ export default function ai() {
                 setSelectedCategory(category);
                 setShowCategories(false);
               }}
+              className={[
+                "flex-row items-center m-1 rounded-full py-2 px-4",
+                selectedCategory === category
+                  ? "bg-[#C67C4E] shadow shadow-[#C67C4E]/20"
+                  : "bg-gray-100 shadow shadow-black/5",
+              ].join(" ")}
+              activeOpacity={0.85}
               style={{
-                flexDirection: "row",
-                alignItems: "center",
-                margin: 4,
-                backgroundColor:
-                  selectedCategory === category ? "#C67C4E" : "#f3f4f6",
-                borderRadius: 20,
-                paddingVertical: 8,
-                paddingHorizontal: 16,
-                shadowColor: selectedCategory === category ? "#C67C4E" : "#000",
-                shadowOpacity: selectedCategory === category ? 0.14 : 0.05,
-                shadowRadius: 4,
                 elevation: selectedCategory === category ? 4 : 1,
               }}
-              activeOpacity={0.85}
             >
               <Ionicons
                 name={categoryIcons[category] || "albums"}
@@ -250,11 +450,12 @@ export default function ai() {
                 style={{ marginRight: 7 }}
               />
               <Text
-                style={{
-                  color: selectedCategory === category ? "#fff" : "#222",
-                  fontWeight: selectedCategory === category ? "bold" : "500",
-                  fontSize: 15,
-                }}
+                className={[
+                  selectedCategory === category
+                    ? "text-white font-bold"
+                    : "text-[#222] font-medium",
+                  "text-[15px]",
+                ].join(" ")}
               >
                 {category}
               </Text>
@@ -264,66 +465,28 @@ export default function ai() {
 
         {/* Glassmorphism Card for Questions */}
         <View
-          style={{
-            marginHorizontal: 16,
-            padding: 18,
-            borderRadius: 28,
-            backgroundColor: "rgba(255,255,255,0.82)",
-            shadowColor: "#C67C4E",
-            shadowOpacity: 0.13,
-            shadowRadius: 16,
-            elevation: 10,
-            marginBottom: 32,
-            borderWidth: 1,
-            borderColor: "#e9d5ff",
-          }}
+          className="mx-4 p-4 rounded-[28px] bg-white/80 border border-[#e9d5ff] shadow shadow-[#C67C4E]/10 mb-8"
+          style={{ elevation: 10 }}
         >
-          <Text
-            style={{
-              fontSize: 20,
-              fontWeight: "bold",
-              color: "#C67C4E",
-              marginBottom: 14,
-              letterSpacing: 0.5,
-            }}
-          >
+          <Text className="text-[20px] font-bold text-[#C67C4E] mb-3 tracking-wide">
             {selectedCategory} Details
           </Text>
           {currentQuestions.map((question, idx) => (
-            <View key={idx} style={{ marginBottom: 18 }}>
-              <Text
-                style={{
-                  color: "#6b7280",
-                  fontWeight: "600",
-                  marginBottom: 5,
-                  fontSize: 15,
-                }}
-              >
+            <View key={idx} className="mb-4.5">
+              <Text className="text-gray-500 font-semibold mb-1 text-[15px]">
                 {idx + 1}. {question}
               </Text>
               <View
+                className="bg-gray-100 rounded-xl border border-[#ede9fe] shadow shadow-[#C67C4E]/5 px-3"
                 style={{
-                  backgroundColor: "#f3f4f6",
-                  borderRadius: 14,
-                  borderWidth: 1,
-                  borderColor: "#ede9fe",
-                  shadowColor: "#C67C4E",
-                  shadowOpacity: 0.04,
-                  shadowRadius: 8,
                   elevation: 2,
-                  paddingHorizontal: 12,
                   paddingVertical: Platform.OS === "ios" ? 14 : 10,
                 }}
               >
                 <TextInput
                   placeholder="Type your answer..."
                   placeholderTextColor="#bbb"
-                  style={{
-                    fontSize: 16,
-                    color: "#222",
-                    paddingVertical: 0,
-                    fontWeight: "500",
-                  }}
+                  className="text-base text-[#222] font-medium py-0"
                   value={
                     answers[selectedCategory]
                       ? answers[selectedCategory][idx] || ""
@@ -336,25 +499,9 @@ export default function ai() {
           ))}
 
           {/* Tips */}
-          <View
-            style={{
-              backgroundColor: "#fdf6e3",
-              borderRadius: 14,
-              padding: 12,
-              marginTop: 10,
-              flexDirection: "row",
-              alignItems: "center",
-            }}
-          >
+          <View className="bg-[#fdf6e3] rounded-xl p-3 mt-2.5 flex-row items-center">
             <Ionicons name="bulb-outline" size={18} color="#C67C4E" />
-            <Text
-              style={{
-                marginLeft: 8,
-                color: "#C67C4E",
-                fontWeight: "600",
-                fontSize: 14,
-              }}
-            >
+            <Text className="ml-2 text-[#C67C4E] font-semibold text-sm">
               {selectedCategory === "Wedding" ||
               selectedCategory === "Engagement"
                 ? "Include full names, venue, and any special instructions for guests."
@@ -381,23 +528,16 @@ export default function ai() {
           <TouchableOpacity
             onPress={generateAIPrompt}
             activeOpacity={0.92}
-            style={{
-              backgroundColor: "#C67C4E",
-              borderRadius: 24,
-              paddingVertical: 16,
-              alignItems: "center",
-              shadowColor: "#C67C4E",
-              shadowOpacity: 0.18,
-              shadowRadius: 20,
-              elevation: 10,
-            }}
+            className="bg-[#C67C4E] rounded-2xl py-4 items-center shadow shadow-[#C67C4E]/20 "
+            style={{ elevation: 10 }}
           >
-            <Text style={{ color: "#fff", fontWeight: "bold", fontSize: 18 }}>
+            <Text className="text-white font-bold text-lg ">
               Generate Invitation ✨
             </Text>
           </TouchableOpacity>
         </Animated.View>
       </ScrollView>
+      <View className="pb-20"></View>
     </LinearGradient>
   );
 }
