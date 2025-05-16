@@ -1,5 +1,6 @@
 import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
+import { router } from "expo-router";
 import React, { useRef, useState } from "react";
 import {
   Animated,
@@ -75,14 +76,39 @@ export default function Home() {
 
   // Event categories
   const categories = [
-    "All",
-    "Wedding",
-    "Birthday",
-    "Party",
-    "Anniversary",
-    "Graduation",
-    "Baby Shower",
-    "Corporate",
+    "Wedding", // Highest demand, most searched[3][5][6]
+    "Birthday", // Universal, all ages[3][5][6]
+    "Party", // Includes general, cocktail, dinner, pool, brunch, etc.[3]
+    "Anniversary", // Major milestone, strong digital adoption[3][4]
+    "Baby Shower", // Growing trend, especially digital[3][5]
+    "Graduation", // High engagement, especially seasonal[3][6]
+    "Festival", // Diwali, Christmas, Eid, New Year, Holi, etc.[3][6]
+    "Corporate", // Business events, launches, conferences[4][6]
+    "Housewarming", // Popular for new homes and apartments[3]
+    "Bachelorette Party", // Pre-wedding, trending for young adults[3]
+    "Bridal Shower", // Pre-wedding, closely tied to weddings[3]
+    "Engagement", // Pre-wedding, high demand[3][5]
+    "Farewell", // For job changes, moving, etc.[3][4]
+    "Welcome", // New jobs, neighbors, teams[4]
+    "Retirement", // Milestone, especially for corporate[4]
+    "Save the Date", // For weddings, big events[3][5]
+    "Memorial", // Remembrance events, growing digital trend[3]
+    "Children’s Party", // Kids’ birthdays and events[3]
+    "Religious", // Baptism, Communion, Bar/Bat Mitzvah, etc.[6]
+    "Achievement", // Promotions, awards, milestones[4]
+    "Appreciation", // Teacher’s Day, Women’s Day, etc.[3]
+    "Mother’s Day", // Family, personal events[3]
+    "Father’s Day", // Family, personal events[3]
+    "Teacher’s Day", // School and college events[3]
+    "Women’s Day", // Social, workplace events[3]
+    "Congratulations", // General celebrations[4]
+    "Good Morning", // Trending in digital/social, daily use
+    "Good Night", // Trending in digital/social, daily use
+    "Motivation", // Trending in digital/social, daily use
+    "Family", // Family reunions, get-togethers[3]
+    "Friendship", // Friendship Day, personal events[3]
+    "Apology", // Niche, but present
+    "Sorry", // Niche, but present
   ];
 
   return (
@@ -139,7 +165,10 @@ export default function Home() {
           >
             <TouchableOpacity
               activeOpacity={0.9}
-              onPress={() => animateButton()}
+              onPress={() => {
+                // animateButton();
+                router.push("/ai");
+              }}
             >
               <LinearGradient
                 colors={["#CF8A56", "#C67C4E", "#A05A2F"]}
@@ -149,7 +178,7 @@ export default function Home() {
               >
                 <View className="bg-[#FF5757] px-3.5 py-1.5 rounded-full self-start mb-3 shadow-sm">
                   <Text className="text-white font-semibold">
-                    ✨ Try AI Magic →
+                    ✨ Try AI Feature →
                   </Text>
                 </View>
                 <Text className="text-white text-2xl font-bold">
