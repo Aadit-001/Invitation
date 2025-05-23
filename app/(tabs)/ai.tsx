@@ -1,10 +1,9 @@
 import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
-import React, { useRef, useState } from "react";
+import { router } from "expo-router";
+import React, { useState } from "react";
 import {
-  Animated,
   Dimensions,
-  Platform,
   ScrollView,
   StatusBar,
   Text,
@@ -12,7 +11,6 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-
 const { width } = Dimensions.get("window");
 
 const categoryIcons = {
@@ -51,12 +49,8 @@ const categoryIcons = {
   Sorry: "cloud",
 };
 
-export default function ai() {
-  const [selectedCategory, setSelectedCategory] = useState("Wedding");
-  const [answers, setAnswers] = useState({});
-  const scaleAnim = useRef(new Animated.Value(1)).current;
+export default function AI() {
   const [search, setSearch] = useState("");
-  const [showCategories, setShowCategories] = useState(false);
 
   const categories = [
     "Wedding",
@@ -95,276 +89,11 @@ export default function ai() {
     "Other",
   ];
 
-  const categoryQuestions = {
-    Wedding: [
-      "What are the names of the couple?",
-      "What's the wedding date and time?",
-      "What's the venue name and address?",
-      "Any specific theme or color scheme?",
-      "Any special message to include?",
-    ],
-    Birthday: [
-      "What's the name of the birthday person?",
-      "How old will they be turning?",
-      "When and where is the celebration?",
-      "Any theme for the party?",
-      "What should guests bring?",
-    ],
-    Party: [
-      "What is the occasion for the party?",
-      "When and where will it take place?",
-      "Is there a dress code or theme?",
-      "Who is hosting the party?",
-      "Any special instructions for guests?",
-    ],
-    Anniversary: [
-      "Who is celebrating the anniversary?",
-      "Which anniversary year is it?",
-      "Date and time of the celebration?",
-      "Venue details?",
-      "Any message or quote to include?",
-    ],
-    "Baby Shower": [
-      "Who is the baby shower for?",
-      "Date and time of the event?",
-      "Venue details?",
-      "Is there a gift registry or theme?",
-      "Any special instructions for guests?",
-    ],
-    Graduation: [
-      "Who is graduating?",
-      "What school or university?",
-      "Date and time of the ceremony or party?",
-      "Venue details?",
-      "Any message or quote to include?",
-    ],
-    Festival: [
-      "Which festival is being celebrated?",
-      "Date and time of the event?",
-      "Venue details?",
-      "Any dress code or theme?",
-      "Any special message or wishes?",
-    ],
-    Corporate: [
-      "What is the event name or purpose?",
-      "Date and time of the event?",
-      "Venue and company name?",
-      "Dress code or agenda?",
-      "RSVP or contact details?",
-    ],
-    Housewarming: [
-      "Who is hosting the housewarming?",
-      "Date and time of the event?",
-      "New address?",
-      "Any theme or instructions?",
-      "Any special message to guests?",
-    ],
-    "Bachelorette Party": [
-      "Who is the party for?",
-      "Date and time of the celebration?",
-      "Venue or meeting point?",
-      "Theme or dress code?",
-      "Any special activities planned?",
-    ],
-    "Bridal Shower": [
-      "Who is the bride-to-be?",
-      "Date and time of the shower?",
-      "Venue details?",
-      "Theme or registry information?",
-      "Any special instructions for guests?",
-    ],
-    Engagement: [
-      "Who are the engaged couple?",
-      "Date and time of the party?",
-      "Venue details?",
-      "Theme or dress code?",
-      "Any special message or RSVP info?",
-    ],
-    Farewell: [
-      "Who is the farewell for?",
-      "Date and time of the event?",
-      "Venue details?",
-      "Reason for farewell (optional)?",
-      "Any message or wishes?",
-    ],
-    Welcome: [
-      "Who is being welcomed?",
-      "Date and time of the event?",
-      "Venue details?",
-      "Any theme or special activities?",
-      "Any message or wishes?",
-    ],
-    Retirement: [
-      "Who is retiring?",
-      "Date and time of the celebration?",
-      "Venue details?",
-      "Career highlights to mention?",
-      "Any message or wishes?",
-    ],
-    "Save the Date": [
-      "What is the event?",
-      "Who is hosting or being celebrated?",
-      "Date and time to save?",
-      "Venue (if known)?",
-      "Any additional notes?",
-    ],
-    Memorial: [
-      "Who is being remembered?",
-      "Date and time of the memorial?",
-      "Venue or location?",
-      "Any special requests for attendees?",
-      "Message or quote to include?",
-    ],
-    "Children's Party": [
-      "Who is the party for?",
-      "Age of the child?",
-      "Date and time of the party?",
-      "Venue details?",
-      "Theme or activities planned?",
-    ],
-    Religious: [
-      "What is the religious occasion?",
-      "Date and time of the event?",
-      "Venue or place of worship?",
-      "Dress code or customs?",
-      "Any message or blessings?",
-    ],
-    Achievement: [
-      "Who is being celebrated?",
-      "What is the achievement?",
-      "Date and time of the celebration?",
-      "Venue details?",
-      "Any special message or quote?",
-    ],
-    Appreciation: [
-      "Who is being appreciated?",
-      "Reason for appreciation?",
-      "Date and time of the event (if any)?",
-      "Venue (if any)?",
-      "Any special message or wishes?",
-    ],
-    "Mother's Day": [
-      "Who is being celebrated?",
-      "Date and time of the event?",
-      "Venue details?",
-      "Any special activities or theme?",
-      "Message or wishes for mothers?",
-    ],
-    "Father's Day": [
-      "Who is being celebrated?",
-      "Date and time of the event?",
-      "Venue details?",
-      "Any special activities or theme?",
-      "Message or wishes for fathers?",
-    ],
-    "Teacher's Day": [
-      "Who is being celebrated?",
-      "Date and time of the event?",
-      "Venue details?",
-      "Any special activities or theme?",
-      "Message or wishes for teachers?",
-    ],
-    "Women's Day": [
-      "Who is being celebrated?",
-      "Date and time of the event?",
-      "Venue details?",
-      "Any special activities or theme?",
-      "Message or wishes for women?",
-    ],
-    Congratulations: [
-      "Who is being congratulated?",
-      "Reason for congratulations?",
-      "Date and time of the celebration (if any)?",
-      "Venue (if any)?",
-      "Any special message or wishes?",
-    ],
-    "Good Morning": [
-      "Who is the message for?",
-      "Any specific occasion or reason?",
-      "Any quote or wish to include?",
-      "Preferred tone (cheerful, formal, etc.)?",
-      "Any additional notes?",
-    ],
-    "Good Night": [
-      "Who is the message for?",
-      "Any specific occasion or reason?",
-      "Any quote or wish to include?",
-      "Preferred tone (calm, loving, etc.)?",
-      "Any additional notes?",
-    ],
-    Motivation: [
-      "Who is the message for?",
-      "What is the goal or challenge?",
-      "Any specific quote or phrase to include?",
-      "Preferred tone (inspiring, supportive, etc.)?",
-      "Any additional notes?",
-    ],
-    Family: [
-      "What is the family occasion?",
-      "Date and time of the event?",
-      "Venue details?",
-      "Any theme or dress code?",
-      "Any special message or wishes?",
-    ],
-    Friendship: [
-      "Who is the message or event for?",
-      "Occasion (if any)?",
-      "Date and time (if event)?",
-      "Venue (if event)?",
-      "Any special message or wishes?",
-    ],
-    Apology: [
-      "Who is the apology for?",
-      "Reason for the apology?",
-      "Any specific message to include?",
-      "Preferred tone (formal, heartfelt, etc.)?",
-      "Any additional notes?",
-    ],
-    Sorry: [
-      "Who is the message for?",
-      "Reason for saying sorry?",
-      "Any specific message to include?",
-      "Preferred tone (formal, heartfelt, etc.)?",
-      "Any additional notes?",
-    ],
-    Other: [
-      "What is the name of your event?",
-      "Who is hosting or organizing the event?",
-      "What is the date and time?",
-      "Where will the event be held (venue or address)?",
-      "What is the purpose or theme of the event?",
-      "Who is invited (target audience)?",
-      "Are there any special instructions or requests for attendees?",
-      "Would you like to include a message, quote, or RSVP details?",
-    ],
-  };
-
-  const currentQuestions = categoryQuestions[selectedCategory] || [];
-
-  const handleInputChange = (text, questionIndex) => {
-    setAnswers({
-      ...answers,
-      [selectedCategory]: {
-        ...(answers[selectedCategory] || {}),
-        [questionIndex]: text,
-      },
+  const navigateToQuestions = (category) => {
+    router.push({
+      pathname: "/invitations/ai-question",
+      params: { category },
     });
-  };
-
-  const generateAIPrompt = () => {
-    Animated.sequence([
-      Animated.timing(scaleAnim, {
-        toValue: 0.95,
-        duration: 100,
-        useNativeDriver: true,
-      }),
-      Animated.timing(scaleAnim, {
-        toValue: 1,
-        duration: 100,
-        useNativeDriver: true,
-      }),
-    ]).start();
-    // ...submit logic
   };
 
   const filteredCategories = search.trim()
@@ -393,11 +122,11 @@ export default function ai() {
             🎉 AI Invitation Designer
           </Text>
           <Text className="text-gray-500 text-base mt-1.5">
-            Answer a few questions and let AI create the perfect invitation.
+            Select a category to create your perfect invitation.
           </Text>
         </View>
 
-        {/* Category Search & Grid */}
+        {/* Category Search */}
         <View className="mx-5 mb-3 bg-white rounded-2xl p-3 flex-row items-center shadow shadow-black/10">
           <Ionicons name="search" size={20} color="#C67C4E" />
           <TextInput
@@ -406,138 +135,236 @@ export default function ai() {
             className="flex-1 ml-2 text-base text-[#222]"
             value={search}
             onChangeText={setSearch}
-            onFocus={() => setShowCategories(true)}
           />
-          <TouchableOpacity
-            onPress={() => {
-              setSearch("");
-              setShowCategories(false);
-            }}
-          >
-            <Ionicons
-              name="close-circle"
-              size={20}
-              color="#bbb"
-              style={{ marginLeft: 8 }}
-            />
-          </TouchableOpacity>
+          {search.length > 0 && (
+            <TouchableOpacity onPress={() => setSearch("")}>
+              <Ionicons
+                name="close-circle"
+                size={20}
+                color="#bbb"
+                style={{ marginLeft: 8 }}
+              />
+            </TouchableOpacity>
+          )}
         </View>
 
-        {/* Category Pills Grid */}
+        {/* Category Pills Grid with Arrows */}
         <View className="flex-row flex-wrap gap-2 mx-5 mb-5 justify-start">
           {filteredCategories.map((category) => (
             <TouchableOpacity
               key={category}
-              onPress={() => {
-                setSelectedCategory(category);
-                setShowCategories(false);
-              }}
-              className={[
-                "flex-row items-center m-1 rounded-full py-2 px-4",
-                selectedCategory === category
-                  ? "bg-[#C67C4E] shadow shadow-[#C67C4E]/20"
-                  : "bg-gray-100 shadow shadow-black/5",
-              ].join(" ")}
+              onPress={() => navigateToQuestions(category)}
+              className="bg-white shadow shadow-black/5 flex-row items-center m-1 rounded-full py-2.5 px-4"
               activeOpacity={0.85}
-              style={{
-                elevation: selectedCategory === category ? 4 : 1,
-              }}
+              style={{ elevation: 2 }}
             >
               <Ionicons
                 name={categoryIcons[category] || "albums"}
                 size={18}
-                color={selectedCategory === category ? "#fff" : "#C67C4E"}
+                color="#C67C4E"
                 style={{ marginRight: 7 }}
               />
-              <Text
-                className={[
-                  selectedCategory === category
-                    ? "text-white font-bold"
-                    : "text-[#222] font-medium",
-                  "text-[15px]",
-                ].join(" ")}
-              >
+              <Text className="text-[#222] font-medium text-[15px]">
                 {category}
               </Text>
+              <Ionicons
+                name="chevron-forward"
+                size={16}
+                color="#C67C4E"
+                style={{ marginLeft: 7 }}
+              />
             </TouchableOpacity>
           ))}
         </View>
 
-        {/* Glassmorphism Card for Questions */}
+        {/* Instructions Card */}
+        {/* Enhanced How It Works Card */}
         <View
-          className="mx-4 p-4 rounded-[28px] bg-white/80 border border-[#e9d5ff] shadow shadow-[#C67C4E]/10 mb-8"
-          style={{ elevation: 10 }}
-        >
-          <Text className="text-[20px] font-bold text-[#C67C4E] mb-3 tracking-wide">
-            {selectedCategory} Details
-          </Text>
-          {currentQuestions.map((question, idx) => (
-            <View key={idx} className="mb-4.5">
-              <Text className="text-gray-500 font-semibold mb-1 text-[15px]">
-                {idx + 1}. {question}
-              </Text>
-              <View
-                className="bg-gray-100 rounded-xl border border-[#ede9fe] shadow shadow-[#C67C4E]/5 px-3"
-                style={{
-                  elevation: 2,
-                  paddingVertical: Platform.OS === "ios" ? 14 : 10,
-                }}
-              >
-                <TextInput
-                  placeholder="Type your answer..."
-                  placeholderTextColor="#bbb"
-                  className="text-base text-[#222] font-medium py-0"
-                  value={
-                    answers[selectedCategory]
-                      ? answers[selectedCategory][idx] || ""
-                      : ""
-                  }
-                  onChangeText={(text) => handleInputChange(text, idx)}
-                />
-              </View>
-            </View>
-          ))}
-
-          {/* Tips */}
-          <View className="bg-[#fdf6e3] rounded-xl p-3 mt-2.5 flex-row items-center">
-            <Ionicons name="bulb-outline" size={18} color="#C67C4E" />
-            <Text className="ml-2 text-[#C67C4E] font-semibold text-sm">
-              {selectedCategory === "Wedding" ||
-              selectedCategory === "Engagement"
-                ? "Include full names, venue, and any special instructions for guests."
-                : selectedCategory === "Birthday"
-                ? "Specify age, theme, and gift preferences for a standout invitation."
-                : selectedCategory === "Corporate"
-                ? "Include branding, agenda, and RSVP details for professional invites."
-                : "Be specific with details like colors, themes, and instructions for a better invitation!"}
-            </Text>
-          </View>
-        </View>
-
-        {/* Floating Action Button */}
-        <Animated.View
           style={{
-            position: "absolute",
-            bottom: 32,
-            left: width / 2 - 90,
-            width: 180,
-            zIndex: 10,
-            transform: [{ scale: scaleAnim }],
+            backgroundColor: "white",
+            borderRadius: 16,
+            padding: 20,
+            marginHorizontal: 20,
+            marginBottom: 24,
+            shadowColor: "#000",
+            shadowOffset: { width: 0, height: 2 },
+            shadowOpacity: 0.06,
+            shadowRadius: 6,
+            elevation: 3,
+            borderWidth: 1,
+            borderColor: "#f0f0f0",
           }}
         >
-          <TouchableOpacity
-            onPress={generateAIPrompt}
-            activeOpacity={0.92}
-            className="bg-[#C67C4E] rounded-2xl py-4 items-center shadow shadow-[#C67C4E]/20 "
-            style={{ elevation: 10 }}
+          {/* Card Header with Icon */}
+          <View
+            style={{
+              flexDirection: "row",
+              alignItems: "center",
+              marginBottom: 16,
+              paddingBottom: 12,
+              borderBottomWidth: 1,
+              borderBottomColor: "rgba(198, 124, 78, 0.1)",
+            }}
           >
-            <Text className="text-white font-bold text-lg ">
-              Generate Invitation ✨
+            <LinearGradient
+              colors={["#CF8A56", "#C67C4E", "#A05A2F"]}
+              style={{
+                width: 40,
+                height: 40,
+                borderRadius: 12,
+                alignItems: "center",
+                justifyContent: "center",
+                marginRight: 12,
+              }}
+            >
+              <Ionicons name="bulb" size={20} color="#fff" />
+            </LinearGradient>
+            <Text
+              style={{
+                fontSize: 18,
+                fontWeight: "bold",
+                color: "#262626",
+              }}
+            >
+              How It Works
             </Text>
-          </TouchableOpacity>
-        </Animated.View>
+          </View>
+
+          {/* Step 1 */}
+          <View
+            style={{
+              flexDirection: "row",
+              alignItems: "flex-start",
+              marginBottom: 14,
+            }}
+          >
+            <View
+              style={{
+                width: 28,
+                height: 28,
+                borderRadius: 14,
+                backgroundColor: "#C67C4E",
+                alignItems: "center",
+                justifyContent: "center",
+                marginRight: 14,
+                marginTop: 2,
+              }}
+            >
+              <Text
+                style={{ color: "white", fontWeight: "bold", fontSize: 14 }}
+              >
+                1
+              </Text>
+            </View>
+            <View style={{ flex: 1 }}>
+              <Text
+                style={{ color: "#262626", fontWeight: "600", fontSize: 15 }}
+              >
+                Select a category
+              </Text>
+              <Text
+                style={{
+                  color: "#777777",
+                  fontSize: 13,
+                  marginTop: 2,
+                  lineHeight: 18,
+                }}
+              >
+                Choose from over 30 event types
+              </Text>
+            </View>
+          </View>
+
+          {/* Step 2 */}
+          <View
+            style={{
+              flexDirection: "row",
+              alignItems: "flex-start",
+              marginBottom: 14,
+            }}
+          >
+            <View
+              style={{
+                width: 28,
+                height: 28,
+                borderRadius: 14,
+                backgroundColor: "#C67C4E",
+                alignItems: "center",
+                justifyContent: "center",
+                marginRight: 14,
+                marginTop: 2,
+              }}
+            >
+              <Text
+                style={{ color: "white", fontWeight: "bold", fontSize: 14 }}
+              >
+                2
+              </Text>
+            </View>
+            <View style={{ flex: 1 }}>
+              <Text
+                style={{ color: "#262626", fontWeight: "600", fontSize: 15 }}
+              >
+                Answer questions
+              </Text>
+              <Text
+                style={{
+                  color: "#777777",
+                  fontSize: 13,
+                  marginTop: 2,
+                  lineHeight: 18,
+                }}
+              >
+                Tell us about your event details
+              </Text>
+            </View>
+          </View>
+
+          {/* Step 3 */}
+          <View
+            style={{
+              flexDirection: "row",
+              alignItems: "flex-start",
+            }}
+          >
+            <View
+              style={{
+                width: 28,
+                height: 28,
+                borderRadius: 14,
+                backgroundColor: "#C67C4E",
+                alignItems: "center",
+                justifyContent: "center",
+                marginRight: 14,
+                marginTop: 2,
+              }}
+            >
+              <Text
+                style={{ color: "white", fontWeight: "bold", fontSize: 14 }}
+              >
+                3
+              </Text>
+            </View>
+            <View style={{ flex: 1 }}>
+              <Text
+                style={{ color: "#262626", fontWeight: "600", fontSize: 15 }}
+              >
+                Get your design
+              </Text>
+              <Text
+                style={{
+                  color: "#777777",
+                  fontSize: 13,
+                  marginTop: 2,
+                  lineHeight: 18,
+                }}
+              >
+                Our AI creates a perfect invitation for you
+              </Text>
+            </View>
+          </View>
+        </View>
       </ScrollView>
-      <View className="pb-20"></View>
     </LinearGradient>
   );
 }
