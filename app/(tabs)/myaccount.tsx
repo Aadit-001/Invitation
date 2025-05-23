@@ -64,7 +64,7 @@ export default function MyAccount() {
           top: 0,
           left: 0,
           right: 0,
-          height: 100,
+          height: 120,
           zIndex: 10,
         }}
       >
@@ -75,7 +75,7 @@ export default function MyAccount() {
           className="w-full h-full"
         >
           {/* Top bar with settings */}
-          <View className="flex-row justify-between items-center px-5 pt-10">
+          <View className="flex-row justify-between items-center pt-14 px-5">
             <Text className="text-white text-xl font-bold">Profile</Text>
             <TouchableOpacity
               className="w-10 h-10 rounded-full bg-white/20 items-center justify-center"

@@ -2,13 +2,14 @@
 
 // Icons
 const ICONS = {
-  crown: require("../assests/icons/crown.png"),
-  filter: require("../assests/icons/Filter.png"),
+  crown: require("../assets/icons/crown.png"),
+  filter: require("../assets/icons/Filter.png"),
 };
 
 // Templates
 const TEMPLATES = {
-  floral: require("../assests/templates/floral.png"),
+  floral: require("../assets/templates/floral.png"),
+  flowers: require("../assets/templates/flowers.jpeg"),
 };
 
 // Export all image constants
