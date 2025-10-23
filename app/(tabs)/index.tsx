@@ -105,7 +105,7 @@ export default function Home() {
           <View className="flex-row justify-between items-center px-5 mb-6">
             <View>
               <Text className="text-gray-300 text-base">Welcome back</Text>
-              <Text className="text-white text-xl font-bold">Tejas 👋</Text>
+              <Text className="text-green-600 text-xl font-bold">Tejas 👋</Text>
             </View>
             <TouchableOpacity className="w-10 h-10 rounded-full bg-[#333333] items-center justify-center">
               <Ionicons
